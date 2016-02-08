@@ -1,49 +1,55 @@
 #include "stdafx.h"
 #include<iostream>
+#include<stdio.h>
 #include<fstream>
 #include<string>
 using namespace std;
 
-void input();
-void search();
-void edit();
-void displayAll();
+void Input();
+void Search();
+void Edit();
+void DisplayAll();
+void Delete();
 
 int main()
 {
 	system("cls");
-	system("Title Ibad Database program");
+	system("Title Employee Database program");
 	system("color 0");
-	cout << "Enter choice from below " << endl;
+	cout << "\n\t\t\tEnter choices from below: " << endl;
 	cout << "1.Input new Employee " << endl;
-	cout << "2.Search for employee by ID number " << endl;
-	cout << "3.Edit an existing account " << endl;
-	cout << "4.Display all employee" << endl;
-	cout << "5.Exit " << endl;
+	cout << "2.View an Employee Data by ID number " << endl;
+	cout << "3.Edit an existing Employee Data " << endl;
+	cout << "4.Display all Employee." << endl;
+	cout << "5.Delete an existing Employee Data. " << endl;
+	cout << "6.Exit \n" << endl;
 
 	int choice;
+	cout << "\tChoice :";
 	cin >> choice;
-
 	switch (choice)
 	{
-	case 1:
-		input();
-		break;
-	case 2:
-		search();
-		break;
-	case 3:
-		edit();
-		break;
-	case 4:
-		displayAll();
-		break;
-	default:
-		break;
+		case 1:
+			Input();
+			break;
+		case 2:
+			Search();
+			break;
+		case 3:
+			Edit();
+			break;
+		case 4:
+			DisplayAll();
+			break;
+		case 5:
+			Delete();
+			break;
+		default:
+			break;
 	}
 }
 
-void input()
+void Input()
 {
 	system("cls");
 	string fname;
@@ -78,7 +84,7 @@ void input()
 	dir.close();
 	main();
 }
-void search()
+void Search()
 {
 	system("cls");
 	string fname;
@@ -133,7 +139,7 @@ void search()
 	}
 
 }
-void edit()
+void Edit()
 {
 	system("cls");
 	string fname;
@@ -215,7 +221,7 @@ void edit()
 	}
 	main();
 }
-void displayAll()
+void DisplayAll()
 {
 	system("cls");
 	string fname;
@@ -234,5 +240,24 @@ void displayAll()
 	}
 	system("Pause");
 	main();
+}
+void Delete()
+{
+	
+	int File;
+	cout << "Enter Employee ID to delete the Data: ";
+	cin >> File;
+	
+	string empId = to_string(File);
+	empId.append(".txt");
+	const char *mycharp = empId.c_str();
+
+	if (remove(mycharp) != 0)
+		cout << "Remove operation failed" << endl;
+	else
+	{
+		_sleep(2000);
+		cout << File << " has been removed." << endl;
+	}
 
 }
